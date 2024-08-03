@@ -72,7 +72,31 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
 
 ### What is an RTL to GDSII flow?
  ![image](https://github.com/user-attachments/assets/857b8aa4-a80b-4b6e-9f3a-79bba78e6527)
- ![Screenshot 2024-08-03 083432](https://github.com/user-attachments/assets/afb357e5-eba4-4d7b-902b-46ab1b3e141e)![Screenshot 2024-08-03 083413](https://github.com/user-attachments/assets/d5675408-c927-4838-b290-f2424823eb7f)
+RTL (Register Transfer Level) Design:
+
+High-level description of the circuit using Verilog or VHDL.
+Synthesis:
+
+Converts RTL code into a gate-level netlist (network of logic gates).
+Floor Planning and Power Planning (FP+PP):
+
+Floor Planning: Defines the overall architecture and placement of functional blocks.
+Power Planning: Designs the power distribution network.
+Placement:
+
+Positions standard cells within the floorplan to optimize performance and routability.
+Clock Tree Synthesis (CTS):
+
+Creates a clock distribution network to ensure minimal skew and latency.
+Routing:
+
+Connects placed cells with wires according to the netlist, optimizing for signal integrity and performance.
+Sign-Off:
+
+Verifies that the design meets functional, timing, power, and signal integrity requirements.
+GDSII (Graphic Data System II):
+
+Generates the final file containing the complete physical layout of the chip for manufacturing.
 
 
 
@@ -80,7 +104,9 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
 
 
 ### Insight into the QFN-48 Chip: Pads, Core, Die, and IP Components
-- [Content here...]
+![Screenshot 2024-08-03 083432](https://github.com/user-attachments/assets/afb357e5-eba4-4d7b-902b-46ab1b3e141e)![Screenshot 2024-08-03 083413](https://github.com/user-attachments/assets/d5675408-c927-4838-b290-f2424823eb7f)
+
+
 
 ### SOC DESIGN USING OPENLANE
 - [Content here...]
