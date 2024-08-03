@@ -75,27 +75,27 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
 RTL (Register Transfer Level) Design:
 
 High-level description of the circuit using Verilog or VHDL.
-Synthesis:
 
+Synthesis:
 Converts RTL code into a gate-level netlist (network of logic gates).
 Floor Planning and Power Planning (FP+PP):
 
 Floor Planning: Defines the overall architecture and placement of functional blocks.
 Power Planning: Designs the power distribution network.
+
 Placement:
-
 Positions standard cells within the floorplan to optimize performance and routability.
+
 Clock Tree Synthesis (CTS):
-
 Creates a clock distribution network to ensure minimal skew and latency.
+
 Routing:
-
 Connects placed cells with wires according to the netlist, optimizing for signal integrity and performance.
+
 Sign-Off:
-
 Verifies that the design meets functional, timing, power, and signal integrity requirements.
-GDSII (Graphic Data System II):
 
+GDSII (Graphic Data System II):
 Generates the final file containing the complete physical layout of the chip for manufacturing.
 
 
