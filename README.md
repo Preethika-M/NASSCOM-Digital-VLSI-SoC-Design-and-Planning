@@ -71,7 +71,9 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
 ## THEORY 1: OPEN-SOURCE EDA, OPENLANE & SKY130 PDK
 
 ### What is an RTL to GDSII flow?
-- ![image](https://github.com/user-attachments/assets/857b8aa4-a80b-4b6e-9f3a-79bba78e6527)
+ ![image](https://github.com/user-attachments/assets/857b8aa4-a80b-4b6e-9f3a-79bba78e6527)
+ ![image](https://github.com/user-attachments/assets/121178a6-56d0-492c-86f9-a30927568a24)
+
 
 
 ### Insight into the QFN-48 Chip: Pads, Core, Die, and IP Components
