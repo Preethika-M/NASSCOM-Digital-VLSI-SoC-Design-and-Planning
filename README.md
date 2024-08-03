@@ -72,8 +72,9 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
 
 ### What is an RTL to GDSII flow?
  ![image](https://github.com/user-attachments/assets/857b8aa4-a80b-4b6e-9f3a-79bba78e6527)
-RTL (Register Transfer Level) Design:
+RTL (Register Transfer Level)
 
+Design:
 High-level description of the circuit using Verilog or VHDL.
 
 Synthesis:
