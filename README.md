@@ -72,6 +72,7 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
 
 ### What is an RTL to GDSII flow?
  ![image](https://github.com/user-attachments/assets/857b8aa4-a80b-4b6e-9f3a-79bba78e6527)
+ ![image](https://github.com/user-attachments/assets/8f36f0b4-55f5-49bc-825e-0e873e8183ed)
  ![image](https://github.com/user-attachments/assets/121178a6-56d0-492c-86f9-a30927568a24)
 
 
