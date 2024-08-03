@@ -106,6 +106,8 @@ Generates the final file containing the complete physical layout of the chip for
 
 
 ### Insight into the QFN-48 Chip: Pads, Core, Die, and IP Components
+![image](https://github.com/user-attachments/assets/53b64855-6f93-45b1-9c5e-4b1997905e7e)
+
 ![Screenshot 2024-08-03 083432](https://github.com/user-attachments/assets/afb357e5-eba4-4d7b-902b-46ab1b3e141e)![Screenshot 2024-08-03 083413](https://github.com/user-attachments/assets/d5675408-c927-4838-b290-f2424823eb7f)
 
 
