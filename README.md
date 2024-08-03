@@ -1,4 +1,5 @@
-NASSCOM_VSD_Soc_Design
+NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
+
 # Table of Contents
 
 - [THEORY 1: OPEN-SOURCE EDA, OPENLANE & SKY130 PDK](#theory-1-open-source-eda-openlane--sky130-pdk)
@@ -43,37 +44,29 @@ NASSCOM_VSD_Soc_Design
 - [Lab exercise to Fix Poly.9 error in SKY130 Tech File](#lab-exercise-to-fix-poly9-error-in-sky130-tech-file)
 - [Lab Challenge Exercise to Describe DRC Error as Geometrical Construct](#lab-challenge-exercise-to-describe-drc-error-as-geometrical-construct)
 - [Lab Challenge to Find Missing or Incorrect Rules and Fix them](#lab-challenge-to-find-missing-or-incorrect-rules-and-fix-them)
-
-## THEORY 4: DELAY TABLES, CTS, TIMING ANALYSIS
-
-- [Introduction to delay tables](#introduction-to-delay-tables)
-- [Introduction to CTS](#introduction-to-cts)
-- [TIMING ANALYSIS](#timing-analysis)
-
-## LAB 4: PRE-LAYOUT TIMING ANALYSIS & IMPORTANCE OF GOOD CLOCK TREE
-
-- [Timing Modelling Using Delay Tables](#timing-modelling-using-delay-tables)
-  - [Converting the Grid Info to Track Info](#converting-the-grid-info-to-track-info)
-  - [Converting Magic Layout to Standard Cell LEF](#converting-magic-layout-to-standard-cell-lef)
-  - [Introduction to Timing Libs and Steps to Include New Cell in Synthesis](#introduction-to-timing-libs-and-steps-to-include-new-cell-in-synthesis)
+- [THEORY 4: DELAY TABLES, CTS, TIMING ANALYSIS](#theory-4-delay-tables-cts-timing-analysis)
+  - [Introduction to delay tables](#introduction-to-delay-tables)
+  - [Introduction to CTS](#introduction-to-cts)
+  - [TIMING ANALYSIS](#timing-analysis)
+- [LAB 4: PRE-LAYOUT TIMING ANALYSIS & IMPORTANCE OF GOOD CLOCK TREE](#lab-4-pre-layout-timing-analysis--importance-of-good-clock-tree)
+  - [Timing Modelling Using Delay Tables](#timing-modelling-using-delay-tables)
+    - [Converting the Grid Info to Track Info](#converting-the-grid-info-to-track-info)
+    - [Converting Magic Layout to Standard Cell LEF](#converting-magic-layout-to-standard-cell-lef)
+    - [Introduction to Timing Libs and Steps to Include New Cell in Synthesis](#introduction-to-timing-libs-and-steps-to-include-new-cell-in-synthesis)
+    - [Steps to configure synthesis settings to fix slack and include vdd/vss](#steps-to-configure-synthesis-settings-to-fix-slack-and-include-vddvss)
+  - [Timing analysis with ideal clocks using openSTA](#timing-analysis-with-ideal-clocks-using-opensta)
+    - [Configure OpenSTA for post-synth timing analysis](#configure-opensta-for-post-synth-timing-analysis)
+    - [Steps to run CTS using TritonCTS](#steps-to-run-cts-using-tritoncts)
+  - [Timing analysis with real clocks using openSTA](#timing-analysis-with-real-clocks-using-opensta)
+    - [Steps to execute OpenSTA with post-CTS timing libraries and CTS assignment](#steps-to-execute-opensta-with-post-cts-timing-libraries-and-cts-assignment)
+  - [How to set wire to include but 1 segments?](#how-to-set-wire-to-include-but-1-segments)
+- [THEORY + LAB 5: FINAL STEPS FOR RTL2GDS USING TRITONROUTE & OPENSTA](#theory--lab-5-final-steps-for-rtl2gds-using-tritonroute--opensta)
+  - [Introduction to Routing Algorithm](#introduction-to-routing-algorithm)
+  - [Steps to build Power Distribution Network](#steps-to-build-power-distribution-network)
+  - [Steps for pin place by std cells](#steps-for-pin-place-by-std-cells)
+  - [Steps for global and detailed routing and configure TritonRoute](#steps-for-global-and-detailed-routing-and-configure-tritonroute)
   - [Steps to configure synthesis settings to fix slack and include vdd/vss](#steps-to-configure-synthesis-settings-to-fix-slack-and-include-vddvss)
-- [Timing analysis with ideal clocks using openSTA](#timing-analysis-with-ideal-clocks-using-opensta)
-  - [Configure OpenSTA for post-synth timing analysis](#configure-opensta-for-post-synth-timing-analysis)
-  - [Steps to run CTS using TritonCTS](#steps-to-run-cts-using-tritoncts)
-- [Timing analysis with real clocks using openSTA](#timing-analysis-with-real-clocks-using-opensta)
-  - [Steps to execute OpenSTA with post-CTS timing libraries and CTS assignment](#steps-to-execute-opensta-with-post-cts-timing-libraries-and-cts-assignment)
-- [How to set wire to include but 1 segments?](#how-to-set-wire-to-include-but-1-segments)
-
-## THEORY + LAB 5: FINAL STEPS FOR RTL2GDS USING TRITONROUTE & OPENSTA
-
-- [Introduction to Routing Algorithm](#introduction-to-routing-algorithm)
-- [Steps to build Power Distribution Network](#steps-to-build-power-distribution-network)
-- [Steps for pin place by std cells](#steps-for-pin-place-by-std-cells)
-- [Steps for global and detailed routing and configure TritonRoute](#steps-for-global-and-detailed-routing-and-configure-tritonroute)
-- [Steps to configure synthesis settings to fix slack and include vdd/vss](#steps-to-configure-synthesis-settings-to-fix-slack-and-include-vddvss)
-
-## REFERENCES
-
+- [REFERENCES](#references)
 
 ## THEORY 1: OPEN-SOURCE EDA, OPENLANE & SKY130 PDK
 
@@ -128,7 +121,6 @@ NASSCOM_VSD_Soc_Design
 - [Content here...]
 
 ### INCEPTION OF LAYOUT & CMOS FABRICATION PROCESS
-- [Content here...]
 
 #### CREATE ACTIVE REGIONS
 - [Content here...]
@@ -136,3 +128,121 @@ NASSCOM_VSD_Soc_Design
 #### FORMATION OF WELLS
 - [Content here...]
 
+#### FORMATION OF GATE TERMINALS
+- [Content here...]
+
+#### LIGHTLY DOPED DRAIN (LDD) FORMATION
+- [Content here...]
+
+#### SOURCE DRAIN FORMATION
+- [Content here...]
+
+#### LOCAL INTERCONNECT FORMATION
+- [Content here...]
+
+#### HIGHER LEVEL METAL FORMATION
+- [Content here...]
+
+## LAB 3: INTRODUCTION TO MAGIC AND SKY130A
+
+### HOW TO MAKE CHANGES WHILE BEING IN THE FLOW?
+- [Content here...]
+
+### HOW TO GIT CLONE THE "VSDSCREDITCELLIGEN" REPO?
+- [Content here...]
+
+### INTRODUCTION TO SKY130A BASIC LAYERS AND LEF USING INVERTER
+
+#### TO CREATE STANDARD CELL LAYOUT IN MAGIC
+- [Content here...]
+
+#### TO EXTRACT THE NETLIST IN MAGIC
+- [Content here...]
+
+### SKY130 TECH FILE LABS
+
+#### CREATE SPICEDECK USING SKY130 TECH
+- [Content here...]
+
+#### CHARACTERIZE INVERTER USING SKY130 TECH FILES
+- [Content here...]
+
+## Introduction to Magic Tools and DRC Rules
+- [Content here...]
+
+## Introduction to SKY130 PDK
+- [Content here...]
+
+## Introduction to Magic & Steps to Load SKY130 Tech Rules
+- [Content here...]
+
+## Lab exercise to Fix Poly.9 error in SKY130 Tech File
+- [Content here...]
+
+## Lab Challenge Exercise to Describe DRC Error as Geometrical Construct
+- [Content here...]
+
+## Lab Challenge to Find Missing or Incorrect Rules and Fix them
+- [Content here...]
+
+## THEORY 4: DELAY TABLES, CTS, TIMING ANALYSIS
+
+### Introduction to delay tables
+- [Content here...]
+
+### Introduction to CTS
+- [Content here...]
+
+### TIMING ANALYSIS
+- [Content here...]
+
+## LAB 4: PRE-LAYOUT TIMING ANALYSIS & IMPORTANCE OF GOOD CLOCK TREE
+
+### Timing Modelling Using Delay Tables
+
+#### Converting the Grid Info to Track Info
+- [Content here...]
+
+#### Converting Magic Layout to Standard Cell LEF
+- [Content here...]
+
+#### Introduction to Timing Libs and Steps to Include New Cell in Synthesis
+- [Content here...]
+
+#### Steps to configure synthesis settings to fix slack and include vdd/vss
+- [Content here...]
+
+### Timing analysis with ideal clocks using openSTA
+
+#### Configure OpenSTA for post-synth timing analysis
+- [Content here...]
+
+#### Steps to run CTS using TritonCTS
+- [Content here...]
+
+### Timing analysis with real clocks using openSTA
+
+#### Steps to execute OpenSTA with post-CTS timing libraries and CTS assignment
+- [Content here...]
+
+### How to set wire to include but 1 segments?
+- [Content here...]
+
+## THEORY + LAB 5: FINAL STEPS FOR RTL2GDS USING TRITONROUTE & OPENSTA
+
+### Introduction to Routing Algorithm
+- [Content here...]
+
+### Steps to build Power Distribution Network
+- [Content here...]
+
+### Steps for pin place by std cells
+- [Content here...]
+
+### Steps for global and detailed routing and configure TritonRoute
+- [Content here...]
+
+### Steps to configure synthesis settings to fix slack and include vdd/vss
+- [Content here...]
+
+## REFERENCES
