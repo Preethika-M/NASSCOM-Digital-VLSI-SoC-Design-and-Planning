@@ -78,9 +78,10 @@ High-level description of the circuit using Verilog or VHDL.
 
 Synthesis:
 Converts RTL code into a gate-level netlist (network of logic gates).
-Floor Planning and Power Planning (FP+PP):
+
 
 Floor Planning: Defines the overall architecture and placement of functional blocks.
+
 Power Planning: Designs the power distribution network.
 
 Placement:
