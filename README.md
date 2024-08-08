@@ -110,10 +110,26 @@ Generates the final file containing the complete physical layout of the chip for
 
 ![Screenshot 2024-08-03 083432](https://github.com/user-attachments/assets/afb357e5-eba4-4d7b-902b-46ab1b3e141e)![Screenshot 2024-08-03 083413](https://github.com/user-attachments/assets/d5675408-c927-4838-b290-f2424823eb7f)
 
+Arduino Microcontroller Board Analysis
 
+The image provided shows an Arduino Microcontroller Board. The primary focus is on the encircled area, which contains the 'Microprocessor.' We will be designing this microprocessor from an abstract level to the fabrication level using the RTL to GDS flow. To understand this process better, let's review some essential IC design components and terminologies:
+
+IC Design Components and Terminologies
+Core:
+The core is the section of the chip where the fundamental logic of the design is implemented. This includes the microprocessor, memory blocks, and other critical functional blocks that define the chip's primary operations.
+
+IO Pads:
+IO pads serve as the communication channels between the core and the external environment. They are essential for transmitting and receiving signals, providing the necessary interface between the internal circuitry of the chip and external devices or systems.
+
+Die:
+The die is the part of the chip that includes both the core and IO pads. It represents the actual area implemented on the silicon wafer. The die is cut from the wafer and packaged to form the final integrated circuit (IC) that is used in electronic devices.
+
+IPs (Intellectual Properties):
+Foundry IPs are specialized components that often require manual design or human intervention to create. Examples include Analog-to-Digital Converters (ADC), Digital-to-Analog Converters (DAC), Phase-Locked Loops (PLLs), and many more. These components are crucial for the chip's functionality and are typically provided by third-party vendors or designed in-house.
 
 ### SOC DESIGN USING OPENLANE
-- [Content here...]
+![image](https://github.com/user-attachments/assets/ad27ee67-bf09-46be-a94b-bd50f6241198)
+
 
 ## LAB 1: GETTING FAMILIAR WITH OPEN SOURCE EDA TOOLS
 
