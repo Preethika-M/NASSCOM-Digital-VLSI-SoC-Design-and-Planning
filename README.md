@@ -133,31 +133,104 @@ Foundry IPs are specialized components that often require manual design or human
 
 ## LAB 1: GETTING FAMILIAR WITH OPEN SOURCE EDA TOOLS
 
-### Understanding OPENLANE Directory Structure
-- [Content here...]
+### Understanding OPENLANE Directory, Structure Design Preparation Step
+![image](https://github.com/user-attachments/assets/e8edf63a-136e-431a-afb5-8edf868217e1)
 
-### Design Preparation Step
-- [Content here...]
+![Screenshot from 2024-08-03 17-39-28](https://github.com/user-attachments/assets/927570ef-b1bc-4702-bc65-fae51ba7c266)
+
 
 ### Review files after design prep and run synthesis
-- [Content here...]
+![Screenshot from 2024-08-06 08-51-45](https://github.com/user-attachments/assets/3f96e823-262d-42f2-9dc7-96b93d6c33ce)
 
-### Characterization of Synthesized Results
-- [Content here...]
+
 
 ## THEORY 2: GOOD FLOORPLAN VS BAD FLOORPLAN & INTRODUCTION TO LIBRARY CELLS
 
 ### CHIP FLOORPLANNING CONSIDERATIONS
-- [Content here...]
+![image](https://github.com/user-attachments/assets/0455a9f2-b58d-47d7-9cda-ec4b953c13db)
+![image](https://github.com/user-attachments/assets/72be02cc-ad6e-4962-a261-040d70ab07e1)
+![image](https://github.com/user-attachments/assets/c6c0bc03-f4fc-4de1-a2a0-c287c79e924b)
+![image](https://github.com/user-attachments/assets/7e53b5aa-5b3f-48a1-a5f1-bb153fde7308)
+![image](https://github.com/user-attachments/assets/ea862a9b-a520-4f9e-90a5-d8f614b122c2)
+### Utilization Factor and Aspect Ratio
+To calculate the Utilization Factor and Aspect Ratio, we must first determine the height and width of the core and die. These dimensions are directly influenced by the design's netlist, which specifies the number of components required to implement the logic. Consequently, the height and width of the die area are derived from the dimensions of the core area.
+
+Example Calculation
+Consider a netlist that includes two logic gates and two flip-flops. If we assume that each element occupies an area of 1 square unit, the netlist would contain four elements, resulting in a minimum total area requirement of 4 square units for the core area.
+
+Utilization Factor
+The Utilization Factor is the ratio of the area occupied by the netlist within the core to the total core area. An effective floorplan typically has a Utilization Factor less than 1. If the Utilization Factor equals 1, it indicates that the core area is fully occupied with no available space for additional logic, leading to an inefficient and potentially problematic floorplan.
+
+Aspect Ratio
+The Aspect Ratio is the ratio of the height of the core to its width. When the Aspect Ratio is 1, the core is square-shaped. An Aspect Ratio different from 1 indicates a rectangular shape for the core. Proper consideration of the Aspect Ratio is crucial in achieving a balanced and effective design layout.
+
+### CONCEPT OF PREPLACED CELLS
+
+![image](https://github.com/user-attachments/assets/eff0c46d-b9a2-4a2e-8de8-63b91b6c7703)
+
+The concept of preplaced cells involves strategically organizing a complex combinational logic circuit, which may include thousands of gates, into predetermined locations within the layout. This process begins by identifying and positioning critical components or blocks, such as memory modules, clock gating cells, comparators, and multiplexers, at specific locations within the design.
+
+These preplaced cells are treated as distinct entities or "black boxes," simplifying the overall integration and management of the design. The process of arranging these preplaced cells, along with other intellectual property (IP) blocks, within the layout is known as floorplanning.
+
+During floorplanning, these IP blocks or critical components are assigned specific, user-defined locations on the chip before the automated placement-and-routing (P&R) process begins. Because their positions are predefined, they are referred to as preplaced cells. After the floorplanning stage, automated placement and routing tools are used to place the remaining logical cells in the design onto the chip, ensuring optimal connectivity and performance.
+
+### CONCEPT OF DECOUPLING CAPACITOR
+
+![image](https://github.com/user-attachments/assets/292d65d2-2cc9-4bea-9a71-422ee9f59f32)
+
+In circuits, certain high-power components may experience insufficient power due to voltage drops in the connecting wires, leading to operation outside their required voltage range for reliable switching. To mitigate this issue, decoupling capacitors (De-cap cells) are strategically placed near these power-demanding components. These capacitors are connected to the power supply and charge up during periods of low switching activity.
+
+When switching occurs, the decoupling capacitors rapidly discharge, providing the necessary power directly to these components. This quick response helps to stabilize the voltage and ensures reliable operation. After the switching event, the capacitors recharge, ready to supply power again when needed. This mechanism is crucial in circuit design to maintain stable operation and prevent performance issues caused by fluctuating power supply conditions.
+
+
+### POWER PLANNING CONCEPT 
+
+![image](https://github.com/user-attachments/assets/f521da2e-dfb8-4d26-aae4-34ca1cfb0493)
+Power Planning: Addressing Voltage Drop and Ground Bounce
+In the previous section, we discussed the role of decoupling capacitors (De-cap cells) in managing power distribution across various circuit blocks. However, De-cap cells have their limitations, including leakage power and increased chip area. To address these challenges, we employ a technique known as power planning. This approach is particularly important in areas of the chip with significant switching activity, where two critical issues can arise: voltage drop and ground bounce.
+
+Voltage Drop
+Voltage drop occurs when a large number of cells simultaneously switch from 0 to 1, creating a sudden surge in power demand. If the power supply is insufficient, the input voltage at that location can drop below the required level. This drop becomes a significant problem when the voltage level falls below the noise margin, leading to unreliable circuit operation and potential signal integrity issues.
+
+Ground Bounce
+Ground bounce is a phenomenon that happens when a group of cells simultaneously switch from 1 to 0, causing a large amount of current to flow to the ground pin at once. This sudden influx of current can temporarily elevate the ground voltage above 0, creating what is known as ground bounce. The problem arises when this temporary rise exceeds the noise margin, potentially causing logic errors and instability in the circuit.
+
+Power Planning: Ensuring Stable Power Distribution
+To address issues like voltage drop and ground bounce, an effective technique called power planning is employed. This involves creating two distinct power grids: one dedicated to Vdd (positive voltage) and another for ground. These power grids are usually implemented using the uppermost metal layers of the chip to minimize resistance and reduce voltage drops.
+
+The power grids are carefully distributed across the entire design and connected to multiple Vdd and ground sources. This configuration allows cells to draw power directly from the nearest Vdd grid when switching from 0 to 1. Similarly, when a cell needs to release power, it discharges to the closest ground grid. By distributing power through these well-structured grids, power planning ensures that voltage levels remain stable and consistent, providing efficient power delivery to all parts of the chip and preventing performance issues.
 
 ### LIBRARY BINDING AND PLACEMENTS
-- [Content here...]
+![image](https://github.com/user-attachments/assets/1c08faeb-a974-4deb-a7af-459833d3a291)
+![image](https://github.com/user-attachments/assets/cde58852-40b1-493c-8aea-179f71c20d29)
+Netlist Binding and Initial Placement Design
+In a netlist, each component is represented with its unique functionality—such as an AND gate having one configuration and an OR gate another. However, in the design library, all components are standardized with uniform square or rectangular shapes. This library includes a variety of pre-designed elements, each defined by specific properties like area, delay, and power consumption. Additionally, the library often contains multiple versions of the same component, each with different trade-offs in performance and size.
+
+For example, larger versions of a component may offer faster performance but consume more area, while smaller versions conserve space at the expense of speed. The selection of these components during the initial placement stage is crucial for optimizing the overall design.
+
+Optimizing Placement with Estimated Wire Length and Capacitance
+During the placement phase, it is essential to consider the estimated wire length and associated capacitance when positioning cells. Wire length estimation involves calculating the distance between input sources and the output sinks they drive. Proper estimation helps minimize signal delays and optimize the overall performance of the circuit. By carefully considering wire length and capacitance, the placement process can achieve a balance between performance and area efficiency, leading to a more reliable and effective design.
 
 ### CELL DESIGN AND CHARACTERISATION FLOWS
-- [Content here...]
+![image](https://github.com/user-attachments/assets/abf517e6-a5a7-43dd-868e-4b4975eb6e05)
+![image](https://github.com/user-attachments/assets/ad8bbfe3-61af-402b-af52-75191006b857)
+Standard Cells
+Standard cells are fundamental building blocks used in IC design, ranging from basic logic gates (like NAND, NOR, XOR) to more complex functional units (such as flip-flops and adders). These cells are designed to be reusable across different integrated circuit (IC) designs. Each standard cell is characterized by its functionality, area, power consumption, and timing characteristics, making them essential for efficient and scalable design processes.
+
+Library
+In IC design, a library (or cell library) is a collection of standard cells. Each cell within the library is optimized for specific parameters, including speed (delay), power consumption, area (size), and drive strength. The library serves as a repository of pre-designed components that can be used to create various digital circuits, ensuring consistency and efficiency across multiple designs.
+
+Typical Cell Design Flow
+The typical cell design flow involves several key steps, which are outlined below:
+![image](https://github.com/user-attachments/assets/a5795dcb-4a9f-4c41-ac3f-30308a127862)
+
 
 ### GENERAL TIMING CHARACTERISATION PARAMETERS
-- [Content here...]
+![image](https://github.com/user-attachments/assets/f65d7a20-b4a1-4bd4-85e8-b221c3f88516)
+![image](https://github.com/user-attachments/assets/94cd643c-8dde-47dd-9072-8763454f406a)
+![image](https://github.com/user-attachments/assets/3deb8924-3691-4f70-a4eb-39e5450d2374)
+![image](https://github.com/user-attachments/assets/0a971c67-ad7f-4dfc-88f8-c9ac1485b5d8)
+
 
 ## LAB 2: FLOORPLANNING & PLACEMENT
 
