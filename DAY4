@@ -1,14 +1,13 @@
 Day 4: CMOS Inverter Characterization
 Timing Analysis of CMOS Inverter
-You perform timing analysis to determine the inverter’s performance in terms of delay and speed.
+Perform timing analysis to determine the inverter’s performance in terms of delay and speed.
 
 Key Steps:
 
 Propagation Delay Measurement: Measure the time it takes for the output to change in response to a change in the input signal.
 Rise/Fall Time Analysis: Evaluate the rise time (time taken for the output to go from low to high) and fall time (time taken for the output to go from high to low).
 Load Capacitance Effects: Analyze how different load capacitances affect the inverter’s delay and power consumption.
-Noise Margin Calculation
-You calculate the noise margins to ensure that the inverter operates reliably in the presence of noise.
+Noise Margin Calculation: Calculate the noise margins to ensure that the inverter operates reliably in the presence of noise.
 
 Key Steps:
 
