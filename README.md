@@ -213,6 +213,7 @@ To ensure a successful floorplanning process, designers must carefully consider 
     ```
 ![Screenshot 2024-08-09 165830](https://github.com/user-attachments/assets/df51594d-57d5-403e-a110-4e7eaf3ab857)
 ![Screenshot 2024-08-09 165815](https://github.com/user-attachments/assets/4f8765c4-8b1f-4f48-b268-24cfde9e5bb3)
+![image](https://github.com/user-attachments/assets/5f76cd4f-4ac6-4e21-a78e-c9be0d1e8736)
 
   
 - Now to open the def file in magic, use below command:
@@ -252,6 +253,9 @@ And then we can see 'picorv32a.placement.def' file. To open it using MAGIC use t
 ```bash
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def
 ```
+![image](https://github.com/user-attachments/assets/d9b2246f-2641-4400-a50e-bd285c7b4822)
+![Screenshot from 2024-08-06 00-48-23](https://github.com/user-attachments/assets/00e9239a-7fd8-495f-b468-0ee700806207)
+
 ## THEORY 3: DESIGN LIBRARY CELL USING MAGIC LAYOUT AND NGSPICE CHARACTERIZATION
 
 ### SPICE DECK CREATION FOR CMOS INVERTER
@@ -328,10 +332,14 @@ e.g : M1 out in vdd vdd pmos W = 0.375u L = 0.25u
   set ::env(FP_IO_MODE) 1; # 0 matching mode - 1 random equidistant mode
   ```
   The above code shows that the pins are randomly equidistant, so now set it to 2 and check for the pins
+![Screenshot from 2024-08-06 09-13-35](https://github.com/user-attachments/assets/1b902ab5-0835-4a38-a779-d29d05c7039e)
+
   ```bash
   set ::env(FP_IO_MODE) 2
   run_floorplan
   ```
+  ![Screenshot from 2024-08-06 09-13-48](https://github.com/user-attachments/assets/e925170b-ea45-41fb-903f-ec1541ecfc8b)
+
 ### HOW TO GIT CLONE THE "VSDSCREDITCELLIGEN" REPO?
 -Go to Openlane directory and use the following command
 ```bash
@@ -346,9 +354,6 @@ cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/v
 magic -T sky130A.tech sky130_inv.mag &
 ```
 ### INTRODUCTION TO SKY130A BASIC LAYERS AND LEF USING INVERTER
-
-#### TO CREATE STANDARD CELL LAYOUT IN MAGIC
-- Refer this repository: 
 
 #### TO EXTRACT THE NETLIST IN MAGIC
 - In the tckon window, use the following command:
@@ -448,15 +453,6 @@ sudo tar xfz drc_tests.tgz
 |                                  | 2. Type the command: `cif see VIA2`.                                                                 |
 |                                  | 3. The metal 3-filled area will now be associated with the VIA2 mask.                                |
 
-
-## Lab exercise to Fix Poly.9 error in SKY130 Tech File
-- [Content here...]
-
-## Lab Challenge Exercise to Describe DRC Error as Geometrical Construct
-- [Content here...]
-
-## Lab Challenge to Find Missing or Incorrect Rules and Fix them
-- [Content here...]
 
 ## DAY 4: DELAY TABLES, CTS, TIMING ANALYSIS
 
