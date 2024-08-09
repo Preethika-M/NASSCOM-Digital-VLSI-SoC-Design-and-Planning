@@ -30,36 +30,9 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
     - [LOCAL INTERCONNECT FORMATION](#local-interconnect-formation)
     - [HIGHER LEVEL METAL FORMATION](#higher-level-metal-formation)
 - [LAB 3: INTRODUCTION TO MAGIC AND SKY130A](#lab-3-introduction-to-magic-and-sky130a)
-  - [HOW TO MAKE CHANGES WHILE BEING IN THE FLOW?](#how-to-make-changes-while-being-in-the-flow)
-  - [HOW TO GIT CLONE THE "VSDSCREDITCELLIGEN" REPO?](#how-to-git-clone-the-vsdsccreditcelligen-repo)
-  - [INTRODUCTION TO SKY130A BASIC LAYERS AND LEF USING INVERTER](#introduction-to-sky130a-basic-layers-and-lef-using-inverter)
-    - [TO CREATE STANDARD CELL LAYOUT IN MAGIC](#to-create-standard-cell-layout-in-magic)
-    - [TO EXTRACT THE NETLIST IN MAGIC](#to-extract-the-netlist-in-magic)
-  - [SKY130 TECH FILE LABS](#sky130-tech-file-labs)
-    - [CREATE SPICEDECK USING SKY130 TECH](#create-spicedeck-using-sky130-tech)
-    - [CHARACTERIZE INVERTER USING SKY130 TECH FILES](#characterize-inverter-using-sky130-tech-files)
-- [Introduction to Magic Tools and DRC Rules](#introduction-to-magic-tools-and-drc-rules)
-- [Introduction to SKY130 PDK](#introduction-to-sky130-pdk)
-- [Introduction to Magic & Steps to Load SKY130 Tech Rules](#introduction-to-magic--steps-to-load-sky130-tech-rules)
-- [Lab exercise to Fix Poly.9 error in SKY130 Tech File](#lab-exercise-to-fix-poly9-error-in-sky130-tech-file)
-- [Lab Challenge Exercise to Describe DRC Error as Geometrical Construct](#lab-challenge-exercise-to-describe-drc-error-as-geometrical-construct)
-- [Lab Challenge to Find Missing or Incorrect Rules and Fix them](#lab-challenge-to-find-missing-or-incorrect-rules-and-fix-them)
-- [THEORY 4: DELAY TABLES, CTS, TIMING ANALYSIS](#theory-4-delay-tables-cts-timing-analysis)
-  - [Introduction to delay tables](#introduction-to-delay-tables)
-  - [Introduction to CTS](#introduction-to-cts)
-  - [TIMING ANALYSIS](#timing-analysis)
-- [LAB 4: PRE-LAYOUT TIMING ANALYSIS & IMPORTANCE OF GOOD CLOCK TREE](#lab-4-pre-layout-timing-analysis--importance-of-good-clock-tree)
-  - [Timing Modelling Using Delay Tables](#timing-modelling-using-delay-tables)
-    - [Converting the Grid Info to Track Info](#converting-the-grid-info-to-track-info)
-    - [Converting Magic Layout to Standard Cell LEF](#converting-magic-layout-to-standard-cell-lef)
-    - [Introduction to Timing Libs and Steps to Include New Cell in Synthesis](#introduction-to-timing-libs-and-steps-to-include-new-cell-in-synthesis)
-    - [Steps to configure synthesis settings to fix slack and include vdd/vss](#steps-to-configure-synthesis-settings-to-fix-slack-and-include-vddvss)
-  - [Timing analysis with ideal clocks using openSTA](#timing-analysis-with-ideal-clocks-using-opensta)
-    - [Configure OpenSTA for post-synth timing analysis](#configure-opensta-for-post-synth-timing-analysis)
-    - [Steps to run CTS using TritonCTS](#steps-to-run-cts-using-tritoncts)
-  - [Timing analysis with real clocks using openSTA](#timing-analysis-with-real-clocks-using-opensta)
-    - [Steps to execute OpenSTA with post-CTS timing libraries and CTS assignment](#steps-to-execute-opensta-with-post-cts-timing-libraries-and-cts-assignment)
-  - [How to set wire to include but 1 segments?](#how-to-set-wire-to-include-but-1-segments)
+ 
+- [DAY 4: DELAY TABLES, CTS, TIMING ANALYSIS](#day-4-delay-tables-cts-timing-analysis)
+
 - [THEORY + LAB 5: FINAL STEPS FOR RTL2GDS USING TRITONROUTE & OPENSTA](#theory--lab-5-final-steps-for-rtl2gds-using-tritonroute--opensta)
   - [Introduction to Routing Algorithm](#introduction-to-routing-algorithm)
   - [Steps to build Power Distribution Network](#steps-to-build-power-distribution-network)
@@ -67,7 +40,7 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
   - [Steps for global and detailed routing and configure TritonRoute](#steps-for-global-and-detailed-routing-and-configure-tritonroute)
   - [Steps to configure synthesis settings to fix slack and include vdd/vss](#steps-to-configure-synthesis-settings-to-fix-slack-and-include-vddvss)
 - [REFERENCES](#references)
-
+- [AUTHOR](#author)
 ## THEORY 1: OPEN-SOURCE EDA, OPENLANE & SKY130 PDK
 
 ### What is an RTL to GDSII flow?
@@ -380,22 +353,97 @@ magic -T sky130A.tech sky130_inv.mag &
 % ext2spice cthresh 0 rthresh 0
 ```
 
-### SKY130 TECH FILE LABS
-
 #### CREATE SPICEDECK USING SKY130 TECH
 - [Content here...]
 
 #### CHARACTERIZE INVERTER USING SKY130 TECH FILES
-- [Content here...]
+-Pin Definitions: Adjust the pin definitions (A and Y) to match the actual physical layout of your inverter.
+-Timing Information: Replace the timing information with actual data from your characterization.
+-Cell Size and Floorplan: Modify the cell size and floorplan according to your design.
+```bash
+LEFDEF VERSION 5.8 ;
+UNITS DISTANCE MICRONS ;
+    
+# Define the cell
+MACRO INVX1
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 1.0 BY 1.0 ;  # Example size, adjust as needed
 
-## Introduction to Magic Tools and DRC Rules
-- [Content here...]
+  # Define the pins
+  PIN A
+    DIRECTION INPUT ;
+    PORT
+      LAYER METAL1 ;
+      RECT 0.0 0.0 0.2 0.2 ;  # Adjust dimensions
+    END
+  END
+
+  PIN Y
+    DIRECTION OUTPUT ;
+    PORT
+      LAYER METAL1 ;
+      RECT 0.0 0.2 0.2 0.4 ;  # Adjust dimensions
+    END
+  END
+
+  # Timing information
+  TIMING
+    CELL RISE
+      ( 0.1 0.2 0.3 0.4 ) ;  # Example timing data, adjust as needed
+    END
+
+    CELL FALL
+      ( 0.1 0.2 0.3 0.4 ) ;  # Example timing data, adjust as needed
+    END
+
+    PROPELLING DELAY
+      (0.060) ;  # Propagation Delay
+    END
+
+    CELL RISE DELAY
+      (0.0637) ;  # Rise Time
+    END
+
+    CELL FALL DELAY
+      (0.0275) ;  # Cell Fall Delay
+    END
+  END
+
+  # Additional cell properties
+  DIEAREA ( 0.0 0.0 ) ( 1.0 1.0 ) ;
+  FLOORPLAN
+    ROW 0.0 0.0 ;
+  END
+
+END MACRO
+```
+
+## Introduction to Magic Tools and DRC
+-Follow this Webpage :  http://opencircuitdesign.com/magic/Rules
 
 ## Introduction to SKY130 PDK
-- [Content here...]
-
+https://skywater-pdk.readthedocs.io/en/main/ 
+Use below command to download the LAB files while being in the home directory:
+```bash
+sudo wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+```
+To extract labs from a zip file using a command line, you can use the following commands depending on your operating system:
+```bash
+sudo tar xfz drc_tests.tgz
+```
 ## Introduction to Magic & Steps to Load SKY130 Tech Rules
-- [Content here...]
+
+| Step                             | Instructions                                                                                         |
+|----------------------------------|------------------------------------------------------------------------------------------------------|
+| **Select an Area and Fill with Metal 3** | 1. Open the Magic GUI.                                                                            |
+|                                  | 2. Select the desired area on your layout.                                                          |
+|                                  | 3. Navigate to the metal 3 layer.                                                                    |
+|                                  | 4. Press `P` to fill the selected region with metal 3.                                               |
+| **Create the VIA2 Mask**          | 1. Open the `tkcon` terminal within Magic.                                                           |
+|                                  | 2. Type the command: `cif see VIA2`.                                                                 |
+|                                  | 3. The metal 3-filled area will now be associated with the VIA2 mask.                                |
+
 
 ## Lab exercise to Fix Poly.9 error in SKY130 Tech File
 - [Content here...]
@@ -406,64 +454,337 @@ magic -T sky130A.tech sky130_inv.mag &
 ## Lab Challenge to Find Missing or Incorrect Rules and Fix them
 - [Content here...]
 
-## THEORY 4: DELAY TABLES, CTS, TIMING ANALYSIS
+## DAY 4: DELAY TABLES, CTS, TIMING ANALYSIS
 
 ### Introduction to delay tables
-- [Content here...]
+![image](https://github.com/user-attachments/assets/51305ee8-9962-45f1-af0e-2802477bda3d)
+![image](https://github.com/user-attachments/assets/7b16b4c1-f04f-46a7-897c-3304607f4c87)
+At every level , each node is driving the same load, hence there is no skew, if there would be a case with different loads then there will be skew.
 
 ### Introduction to CTS
-- [Content here...]
+![image](https://github.com/user-attachments/assets/6ec6b85e-a4ac-4bd8-b008-04442a906c72)
+![image](https://github.com/user-attachments/assets/28c5902f-748c-4334-a44e-2fa219e0d294)
+![image](https://github.com/user-attachments/assets/1c66c1c2-9f6e-453b-b6c8-0cc80fcbb05e)
+
 
 ### TIMING ANALYSIS
-- [Content here...]
+![image](https://github.com/user-attachments/assets/78cad181-2b94-4d35-a6f0-3024b9b1b9ec)
+![image](https://github.com/user-attachments/assets/e33c4ca4-176a-423b-8b71-80bb251e68c5)
+
 
 ## LAB 4: PRE-LAYOUT TIMING ANALYSIS & IMPORTANCE OF GOOD CLOCK TREE
 
 ### Timing Modelling Using Delay Tables
 
 #### Converting the Grid Info to Track Info
-- [Content here...]
+Purpose:
+
+In physical design, it is essential to convert grid information, such as rows and columns, into track information. Tracks are predefined horizontal and vertical paths on each metal layer.
+
+Considerations:
+
+When designing standard cells, consider the following:
+
+Case 1: Input and output ports should align with the intersections of vertical and horizontal tracks. Case 2: The standard cell's width should be an odd multiple of the horizontal track pitch, and its height should be an odd multiple of the vertical track pitch.
+
+LEF File Extraction:
+
+To continue, we need the LEF (Library Exchange Format) file for the Inverter cell. Extract this file from the current Inverter cell to provide essential information for the place-and-route (PNR) process.
+
+Understanding Tracks:
+
+Open the tracks.info file to learn more about the horizontal and vertical tracks available on each metal layer. This file specifies pitch, spacing, and other relevant details necessary for efficient routing.
+
+-Command to open the custom Inverter Layout in Magic, first go to the 'vsdstdcelldesign' dircetory and then use:
+```bash
+magic -T sky130A.tech sky130_inv.mag &
+```
+![image](https://github.com/user-attachments/assets/6e7f6a9c-a2b7-48a1-8f1c-2bc6c895d7f1)
+-Open the tracks.info file to know more about tracks:
+```bash
+# Fisrt go to the following directory :
+/home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd
+
+# open the tracks.info file
+less tracks.info
+```
+![image](https://github.com/user-attachments/assets/e3f4668f-ef40-460a-992e-6db19fa4d2ab)
+-To set grids as tracks of locali layer, use the follwoing command:
+```bash
+grid 0.46um 0.34um 0.23um 0.17um
+```
+![image](https://github.com/user-attachments/assets/a06fa015-026f-49b3-aef4-a39c90d9bbd5)
+Now, we can see in the below image , that the Case 1 consideration is met i.e. Input and output ports are aligned with the intersections of vertical and horizontal tracks.
+![image](https://github.com/user-attachments/assets/bea9003f-25d1-482d-92af-5550cf810b3a)
+Now, we can see in the below image , that the Case 2 consideration are also met as 3 boxes are covered between the boundariesi.e. The standard cell's width should be an odd multiple of the horizontal track pitch, and its height should be an odd multiple of the vertica track pitch.
+![image](https://github.com/user-attachments/assets/8022e0a9-62b2-4a99-8488-22acb837ed76)
+![image](https://github.com/user-attachments/assets/0c4964c6-90f9-40ef-b2c1-9618bb24281d)
+-How to convert labels to ports [No need to do it here as it is already done]:
+![image](https://github.com/user-attachments/assets/26ca8fd8-7be5-4c99-bfef-7ae1950fe16d)
 
 #### Converting Magic Layout to Standard Cell LEF
-- [Content here...]
-
-#### Introduction to Timing Libs and Steps to Include New Cell in Synthesis
-- [Content here...]
-
-#### Steps to configure synthesis settings to fix slack and include vdd/vss
-- [Content here...]
+![image](https://github.com/user-attachments/assets/83897712-5ced-48c6-87c0-a4ebf460f4c4)
+![image](https://github.com/user-attachments/assets/bc460505-a8ee-4299-980c-07af6f2f13de)
+![image](https://github.com/user-attachments/assets/b1dae180-2c3d-4994-bd67-fb386aa83ae5)
+![image](https://github.com/user-attachments/assets/92c44e4a-c86d-4884-9149-95574defcd92)
+Now we need to extract the LEF file. First save .mag file by using the command ``save sky130_vsdinv.mag``` in the tkcon terminal.
+![image](https://github.com/user-attachments/assets/9bab5ec8-e08d-45de-826b-e583d0ba6f59)
+Now, use the follwoing command to open the saved mag file:
+```bash
+magic -T sky130A.tch sky130_vsdinv.mag &
+```
+![image](https://github.com/user-attachments/assets/7c89de43-1d85-431c-8552-625b4f92ab76)
+![image](https://github.com/user-attachments/assets/077365f5-c1b3-46db-96db-1f7a7b3d9e13)
 
 ### Timing analysis with ideal clocks using openSTA
 
 #### Configure OpenSTA for post-synth timing analysis
-- [Content here...]
+Next stage is to perform STA on the design: First create 'pre_sta.conf' file in the openlane directory as shiown below:
+![image](https://github.com/user-attachments/assets/11efd173-b87e-497f-bbdd-5c1e38c2485f)
+```bash
+set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um
+read_liberty -max /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib
+read_liberty -min /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib
+read_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/24-03_10-03/results/synthesis/picorv32a.synthesis.v
+link_design picorv32a
+read_sdc /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/my_base.sdc
+report_checks -path_delay min_max -fields {slew trans net cap input_pins}
+report_tns
+report_wns
+```
+![image](https://github.com/user-attachments/assets/ee7a9db4-0d23-4c10-85d5-45f065c0798f)
+```bash
 
+
+set ::env(CLOCK_PORT) clk
+set ::env(CLOCK_PERIOD) 24.73
+set ::env(SYNTH_DRIVING_CELL) sky130_fd_sc_hd__inv_8
+set ::env(SYNTH_DRIVING_CELL_PIN) Y
+set ::env(SYNTH_CAP_LOAD) 17.653
+set ::env(IO_PCT) 0.2
+set ::env(SYNTH_MAX_FANOUT) 6
+
+create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period $::env(CLOCK_PERIOD)
+
+set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
+set output_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
+
+puts "\[INFO\]: Setting output delay to: $output_delay_value"
+puts "\[INFO\]: Setting input delay to: $input_delay_value"
+
+set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
+
+set clk_indx [lsearch [all_inputs] [get_port $::env(CLOCK_PORT)]]
+
+set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx]
+
+set all_inputs_wo_clk_rst $all_inputs_wo_clk
+
+set_input_delay $input_delay_value -clock [get_clocks $::env(CLOCK_PORT)] $all_inputs_wo_clk_rst
+
+set_output_delay $output_delay_value -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
+
+set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) [all_inputs]
+
+set cap_load [expr $::env(SYNTH_CAP_LOAD) /1000.0]
+
+puts "\[INFO\]: Setting load to: $cap_load"
+
+set_load $cap_load [all_outputs]
+```
+and then create 'my_base.sdc' file in the /picorv32a/src directory as shown above.
 #### Steps to run CTS using TritonCTS
-- [Content here...]
-
+To update the previous design with the improved version, use the command:
+```bash
+write_verilog //path of the previous design//
+#In our case:
+write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/20-07_16-44/results/synthesis/picorv32a.synthesis.v
+```
+![image](https://github.com/user-attachments/assets/5a2ed7b4-d6a9-4917-9db6-cf58d164f676)
+Once the update is complete, proceed with the Floorplan stage using the same commands as before.
+```bash
+init_floorplan
+place_io
+tap_decap_or
+```
+```bash
+run_placement
+```
+Now after the placement has been completed, we go for CTS:
+```bash
+run_cts
+```
 ### Timing analysis with real clocks using openSTA
+```bash
+openroad
+```
+Above command to enter into openroad.
+In openroad, We will first create the database (creted from lef and def files) and in the timing analysis this db is used. Run the follwoing commands:
+```bash
+read_lef /openLANE_flow/designs/picorv32a/runs/20-07_16-44/tmp/merged.lef
+```
+```bash
+read_def /openLANE_flow/designs/picorv32a/runs/20-07_16-44/results/cts/picorv32a.cts.def
+```
+```bash
+write_db pico_cts.db
+```
+```bash
+read_db pico_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/20-07_16-44/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
 
+```
 #### Steps to execute OpenSTA with post-CTS timing libraries and CTS assignment
-- [Content here...]
+First use ```exit`` to exit from openroad, now you will come to openlane: Now follow these steps: To check the current value of CTS_CLK_BUFFER_LIST
+```bash
+echo $::env(CTS_CLK_BUFFER_LIST)
+```
+![image](https://github.com/user-attachments/assets/2003fe64-dded-4da8-8a0b-2f89d267b7ca)
+To remove sky130_fd_sc_hd__clkbuf_1 from the list
+```bash
+set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+```
+![image](https://github.com/user-attachments/assets/bdb74c91-cff7-4f78-9aed-7ac96899fc85)
+To check the current value of CURRENT_DEF
+```bash
+To check the current value of CURRENT_DEF
+```
+```bash
+set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/12-07_11-26/results/placement/picorv32a.placement.def
+```
+```bash
+echo $::env(CTS_CLK_BUFFER_LIST)
+```
+Now, We need to follow the similar steps that we have followed earlier in the openroad. go to openroad again and then:
+```bash
+read_lef /openLANE_flow/designs/picorv32a/runs/12-07_11-26/tmp/merged.lef
 
-### How to set wire to include but 1 segments?
-- [Content here...]
+read_def /openLANE_flow/designs/picorv32a/runs/12-07_11-26/results/cts/picorv32a.cts.def
+
+write_db pico_cts1.db
+
+read_db pico_cts1.db
+
+read_verilog /openLANE_flow/designs/picorv32a/runs/12-07_11-26/results/synthesis/picorv32a.synthesis_cts.v
+
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+link_design picorv32a
+
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+set_propagated_clock [all_clocks]
+
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+```
+![image](https://github.com/user-attachments/assets/28ce9eac-0eb1-42c2-b1d7-4e484ce9b2e9)
+```bash
+report_clock_skew -hold
+```
+![image](https://github.com/user-attachments/assets/c9d38e13-1874-47a9-8757-7cd56380f076)
+```bash
+report_clock_skew -setup
+```
+To insert sky130_fd_sc_hd__clkbuf_1 :
+```bash
+set ::env(CTS_CLK_BUFFER_LIST) [linsert $::env(CTS_CLK_BUFFER_LIST) 0 sky130_fd_sc_hd__clkbuf_1]
+```
+![image](https://github.com/user-attachments/assets/1abf71b8-9597-4221-b890-d62b1e66703f)
+
 
 ## THEORY + LAB 5: FINAL STEPS FOR RTL2GDS USING TRITONROUTE & OPENSTA
 
 ### Introduction to Routing Algorithm
-- [Content here...]
+Introduction to maze routing(Lees algorithm)
+Routing:It is finding the best shortest possible connection between two end points with one point being the source and other point being the target and with less number of twist and turns.
+Maze-Routing(Lee's Algorithm): These should not be zig-zag lines of connections most of the connections should be in L shape or in Z shape. So according to algorithm first it create some grids and grids are routing at the backend. It's called as routing grid. There are some numbers of grids on this routig having some dimensions. SO here we are having two points one is 'Source' and the other is 'Target'. With the help of this routing grid algorithm has to find out the best possible way between them.
+
+First step is algorithm tries to lable all of the grids surrounded. Only the adjacent horizontal and vertical grids are labeled not the digonal one as shown in the image below.Now we will lable the grids to the next integer untill we reach to the target. In the example we reached the target after integer 9.So now there are so many ways to reach to target from source but we have to choose the best shortest possible way to reach the target.And we need to avoid the zig-zag way better to cghoose 'L' shape routing'.
+![image](https://github.com/user-attachments/assets/2bf73365-e013-418d-b580-ecf766922113)
+![image](https://github.com/user-attachments/assets/2b7e3c37-2b10-4662-8243-de3a9899f667)
+![image](https://github.com/user-attachments/assets/201582a6-ca73-42be-82a2-24f83615e69c)
+![image](https://github.com/user-attachments/assets/6a02dc3e-8fb7-43bf-82ba-2015db9e15aa)
+![image](https://github.com/user-attachments/assets/2f9bad5e-dd4d-4ea2-bec0-47183adf98d3)
+![image](https://github.com/user-attachments/assets/c1fbb71d-c3ed-4aa4-8352-f54d6ec20a52)
 
 ### Steps to build Power Distribution Network
-- [Content here...]
 
 ### Steps for pin place by std cells
-- [Content here...]
+![image](https://github.com/user-attachments/assets/e2a30f51-6ecb-4f09-8f21-a7367f3ab34d)
+
+In the figure above, we can see how power is distributed to the standard cells. Surrounding the design are I/O pads, with the red and blue blocks representing power pads. The red pads supply power, while the blue ones provide the ground connection. These pads connect to power and ground rings that encircle the design, supplying power to straps. The vertical lines seen for the rings are known as power straps. Connections from the power straps and rings extend to the power rails, with standard cells positioned between these rails. The height of the standard cells must be multiples of the rail pitch to ensure proper power and ground supply.
+
+
+Now the last stage in the design is Routing , us ethe following command:
+```bash
+run_routing
+```
+![image](https://github.com/user-attachments/assets/5aa69f48-5e09-4f73-9d4f-c0799e12d5d9)
+The routing has been completed with zero violations, but there is a negative slack, we need to eleiminate the engaticve slack for successful completion of the Physical Design Flow.
+
 
 ### Steps for global and detailed routing and configure TritonRoute
-- [Content here...]
+-Commands to view and change parameters to improve timing and run synthesis:
+| Step | Command                                          | Description                                                               |
+|------|--------------------------------------------------|---------------------------------------------------------------------------|
+| 1    | `prep -design picorv32a -tag 24-03_10-03 -overwrite` | Prepare the design for updating variables                                   |
+| 2    | `set lefs [glob $::env(DESIGN_DIR)/src/*.lef]`       | Include newly added LEF files in the OpenLane flow                          |
+| 3    | `add_lefs -src $lefs`                               | Merge the LEF files                                                        |
+| 4    | `echo $::env(SYNTH_STRATEGY)`                       | Display the current value of the `SYNTH_STRATEGY` variable                   |
+| 5    | `set ::env(SYNTH_STRATEGY) "DELAY 3"`               | Set a new value for the `SYNTH_STRATEGY` variable                            |
+| 6    | `echo $::env(SYNTH_BUFFERING)`                     | Check if `SYNTH_BUFFERING` is enabled by displaying its current value       |
+| 7    | `echo $::env(SYNTH_SIZING)`                        | Display the current value of the `SYNTH_SIZING` variable                    |
+| 8    | `set ::env(SYNTH_SIZING) 1`                        | Set a new value for the `SYNTH_SIZING` variable                             |
+| 9    | `echo $::env(SYNTH_DRIVING_CELL)`                  | Check the current value of `SYNTH_DRIVING_CELL` to ensure it's the correct cell |
+| 10   | `run_synthesis`                                   | Run the synthesis process after the design is prepared                      |
 
-### Steps to configure synthesis settings to fix slack and include vdd/vss
-- [Content here...]
+![image](https://github.com/user-attachments/assets/3b07f6d2-f2f4-41e2-ba2a-24179dad8b90)
+![image](https://github.com/user-attachments/assets/d6c62888-201c-491c-9aaf-646b5a6cf5cf)
+
+To view the final layout, use the following command:
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-07_15-00/tmp/merged.lef def read /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-07_15-00/results/routing/picorv32a.def &
+```
+
+![image](https://github.com/user-attachments/assets/b0c975cd-5bc7-45fb-84b8-6daaea4a7fcd)
+![image](https://github.com/user-attachments/assets/71b0f5e4-636f-42cb-808d-47ac5aa8ac87)
+
+### Triton route:
+
+![image](https://github.com/user-attachments/assets/54050705-1318-4a3e-9643-3604d4b19eb2)
+![image](https://github.com/user-attachments/assets/5c71bac9-3470-41a1-8aa3-f63dcad37cbb)
+
+TritonRoute Features TritonRoute is a sophisticated detailed routing tool designed for the physical design of integrated circuits (ICs). It integrates several advanced features that enable efficient and accurate routing in complex designs, especially for advanced technology nodes.
+
+Key Features of TritonRoute
+
+Preprocessed Route Guides:
+TritonRoute uses preprocessed route guides to enhance the efficiency of the routing process. These guides are generated during the global routing stage and provide the tool with initial routing paths, helping to streamline the detailed routing phase. By following these guides, TritonRoute can reduce the search space for routing paths, leading to faster and more efficient routing.
+
+Inter-Guide Connectivity:
+The tool effectively manages inter-guide connectivity, ensuring that the connections between different routing guides are optimized for both performance and manufacturability. This feature helps maintain continuity across different routing segments and ensures that all nets are properly connected according to the design specifications.
+
+Intra- & Inter-Layer Routing:
+TritonRoute handles both intra-layer and inter-layer routing with precision. Intra-layer routing deals with connections within the same metal layer, while inter-layer routing handles connections between different metal layers. The tool carefully manages the transitions between layers, using vias and other routing strategies to ensure that all connections are made efficiently and with minimal interference.
+
+Intra-Layer Parallel and Inter-Layer Sequential Panel Routing:
+TritonRoute employs an intra-layer parallel routing method, allowing it to handle multiple routing tasks simultaneously within the same layer. This parallelism increases the efficiency and speed of the routing process. For inter-layer routing, TritonRoute uses a sequential panel routing method. This approach ensures that connections between different layers are made in a controlled and orderly manner, reducing the risk of conflicts and ensuring that all design rules are adhered to.
+
+Connectivity Access Point Handling:
+TritonRoute includes advanced algorithms for managing connectivity access points, which are critical for ensuring that all nets are properly connected in the final design. The tool handles both access points and access point clusters, ensuring that even in dense or complex designs, all required connections are made reliably.
+
+Access Point Cluster Management:
+TritonRoute manages access point clusters, which are groups of potential connection points that can be used to connect different parts of the design. By efficiently managing these clusters, the tool can optimize routing paths and reduce congestion, leading to better overall design performance.
 
 ## REFERENCES
+This project has utilized resources and materials from the following sources:
+-[VSD STANDARD CELL DESIGN] (#https://github.com/nickson-jose/vsdstdcelldesign)
+-[GOOGLE SKYWATER PDK](#https://github.com/google/skywater-pdk)
+-Materials provided in the NASSCOM VSD SoC Design Program
+
+### AUTHOR
+Preethika-M
