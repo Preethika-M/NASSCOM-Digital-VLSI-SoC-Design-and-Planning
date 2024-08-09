@@ -234,8 +234,12 @@ The typical cell design flow involves several key steps, which are outlined belo
 
 ## LAB 2: FLOORPLANNING & PLACEMENT
 
-### STEPS TO RUN FLOORPLAN USING OPENLANE
-- [Content here...]
+### RUN FLOORPLAN USING OPENLANE
+To ensure a successful floorplanning process, designers must carefully consider specific parameters, often referred to as "switches," that can significantly influence the outcome. Key switches include the utilization factor and aspect ratio, which play a critical role in shaping the floorplan. It is essential for designers to confirm that these parameters meet the project specifications before starting the floorplanning phase. The accompanying image highlights the different types of switches that are pivotal during the floorplanning stage.
+- After synthesis, use below command to run floorplan:
+  ```bash
+    run_floorplan
+    ```
 
 ### STEPS TO PERFORM PLACEMENT IN OPENLANE
 - [Content here...]
