@@ -13,8 +13,7 @@ Key Steps:
 
 Determine VOH and VOL: Measure the output high (VOH) and output low (VOL) voltages.
 Calculate NMH and NML: Determine the noise margin high (NMH) and noise margin low (NML) using the VOH, VOL, VIH (input high voltage), and VIL (input low voltage).
-Power Consumption Analysis
-You analyze the power consumption of the CMOS inverter during its operation.
+Power Consumption Analysis:Analyze the power consumption of the CMOS inverter during its operation.
 
 Key Steps:
 
