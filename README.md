@@ -212,8 +212,9 @@ To ensure a successful floorplanning process, designers must carefully consider 
     run_floorplan
     ```
 ![Screenshot 2024-08-09 165830](https://github.com/user-attachments/assets/df51594d-57d5-403e-a110-4e7eaf3ab857)
-![Screenshot 2024-08-09 165815](https://github.com/user-attachments/assets/4f8765c4-8b1f-4f48-b268-24cfde9e5bb3)
-![image](https://github.com/user-attachments/assets/5f76cd4f-4ac6-4e21-a78e-c9be0d1e8736)
+
+![Screenshot from 2024-08-06 00-37-16](https://github.com/user-attachments/assets/0951ebff-022c-4c5d-9113-e1bb038a3083)
+
 
   
 - Now to open the def file in magic, use below command:
