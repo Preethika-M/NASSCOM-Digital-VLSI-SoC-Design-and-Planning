@@ -1,1 +1,24 @@
+Day 4: CMOS Inverter Characterization
+Timing Analysis of CMOS Inverter
+You perform timing analysis to determine the inverter’s performance in terms of delay and speed.
 
+Key Steps:
+
+Propagation Delay Measurement: Measure the time it takes for the output to change in response to a change in the input signal.
+Rise/Fall Time Analysis: Evaluate the rise time (time taken for the output to go from low to high) and fall time (time taken for the output to go from high to low).
+Load Capacitance Effects: Analyze how different load capacitances affect the inverter’s delay and power consumption.
+Noise Margin Calculation
+You calculate the noise margins to ensure that the inverter operates reliably in the presence of noise.
+
+Key Steps:
+
+Determine VOH and VOL: Measure the output high (VOH) and output low (VOL) voltages.
+Calculate NMH and NML: Determine the noise margin high (NMH) and noise margin low (NML) using the VOH, VOL, VIH (input high voltage), and VIL (input low voltage).
+Power Consumption Analysis
+You analyze the power consumption of the CMOS inverter during its operation.
+
+Key Steps:
+
+Dynamic Power Calculation: Evaluate the power consumed during switching activity, considering the load capacitance and switching frequency.
+Static Power Calculation: Measure the leakage current and calculate the static power consumption when the inverter is not switching.
+Total Power Consumption: Sum the dynamic and static power to determine the total power consumption of the inverter.
