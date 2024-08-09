@@ -751,16 +751,13 @@ The routing has been completed with zero violations, but there is a negative sla
 | 9    | `echo $::env(SYNTH_DRIVING_CELL)`                  | Check the current value of `SYNTH_DRIVING_CELL` to ensure it's the correct cell |
 | 10   | `run_synthesis`                                   | Run the synthesis process after the design is prepared                      |
 
-![image](https://github.com/user-attachments/assets/3b07f6d2-f2f4-41e2-ba2a-24179dad8b90)
-![image](https://github.com/user-attachments/assets/d6c62888-201c-491c-9aaf-646b5a6cf5cf)
+
 
 To view the final layout, use the following command:
 ```bash
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-07_15-00/tmp/merged.lef def read /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-07_15-00/results/routing/picorv32a.def &
 ```
 
-![image](https://github.com/user-attachments/assets/b0c975cd-5bc7-45fb-84b8-6daaea4a7fcd)
-![image](https://github.com/user-attachments/assets/71b0f5e4-636f-42cb-808d-47ac5aa8ac87)
 
 ### Triton route:
 
