@@ -1,1 +1,26 @@
+Key Learnings for Day 2 (Theory 2 and Lab 2):
+Theory 2: Good Floorplan vs Bad Floorplan & Introduction to Library Cells
+Chip Floorplanning Considerations:
 
+Floorplanning involves arranging the blocks within the chip to optimize space and performance.
+Utilization Factor and Aspect Ratio are crucial parameters; the utilization factor should ideally be less than 1 to allow for additional logic and routing.
+Preplaced Cells and Decoupling Capacitors:
+
+Preplaced Cells: Critical components like memory and clock gating cells are positioned before automated placement.
+Decoupling Capacitors: These are used to manage power distribution by providing stable power to high-demand components during switching activities.
+Power Planning:
+
+Power planning involves creating separate power meshes for Vdd and ground to ensure stable and efficient power distribution across the chip.
+Library Binding and Placement Optimization:
+
+Library cells are predefined components used during placement. Optimizing placement involves minimizing wire lengths and capacitance to ensure efficient routing and performance.
+Lab 2: Floorplanning & Placement
+Running Floorplan in OpenLANE:
+
+The lab demonstrated how to run floorplanning in OpenLANE, adjust critical parameters, and review the results. The focus was on understanding how to set utilization factors and aspect ratios to achieve an efficient floorplan.
+Using Magic for Layout Visualization:
+
+Magic, a layout tool, was used to visualize the floorplan and placement. It allows for detailed exploration of the design layout, making it easier to analyze and correct any issues.
+Running Placement in OpenLANE:
+
+The placement process involves positioning standard cells within the layout. The lab covered global and detailed placement, ensuring legal and optimized cell placement for further routing steps.
