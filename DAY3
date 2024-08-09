@@ -1,6 +1,6 @@
 Day 3: SPICE Deck Creation for CMOS Inverter
 Understanding SPICE Deck Components
-You begin by understanding the essential components of a SPICE deck, which include defining the transistors, voltage sources, input signals, and output nodes.
+Understanding the essential components of a SPICE deck, which include defining the transistors, voltage sources, input signals, and output nodes.
 
 Key Steps:
 
