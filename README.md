@@ -338,18 +338,47 @@ e.g : M1 out in vdd vdd pmos W = 0.375u L = 0.25u
 ## LAB 3: INTRODUCTION TO MAGIC AND SKY130A
 
 ### HOW TO MAKE CHANGES WHILE BEING IN THE FLOW?
-- [Content here...]
-
+- First, verify the current configuration of the pins. Navigate to the following directory
+- Use command to open "def" file in magic:
+```bash
+ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
+```
+- As we can see, the pins are currently placed at random equidistant intervals. If you want to change this to a different IO strategy, the IO placer (an open-source EDA tool) supports four different strategies. To make this change, navigate to the following directory and open the floorplan.tcl file:
+  ```bash
+  /Desktop/work/tools/openlane_working_dir/openlane/configuration$
+  ```
+  ```bash
+  set ::env(FP_IO_MODE) 1; # 0 matching mode - 1 random equidistant mode
+  ```
+  The above code shows that the pins are randomly equidistant, so now set it to 2 and check for the pins
+  ```bash
+  set ::env(FP_IO_MODE) 2
+  run_floorplan
+  ```
 ### HOW TO GIT CLONE THE "VSDSCREDITCELLIGEN" REPO?
-- [Content here...]
-
+-Go to Openlane directory and use the following command
+```bash
+git clone <url of the github repo you want to clone>
+```
+Copy the file to directory vsdstdcelldesign using following command:
+```bash
+cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+```
+-After successfully copied, use below command to open it:
+```bash
+magic -T sky130A.tech sky130_inv.mag &
+```
 ### INTRODUCTION TO SKY130A BASIC LAYERS AND LEF USING INVERTER
 
 #### TO CREATE STANDARD CELL LAYOUT IN MAGIC
-- [Content here...]
+- Refer this repository: 
 
 #### TO EXTRACT THE NETLIST IN MAGIC
-- [Content here...]
+- In the tckon window, use the following command:
+```bash
+  % extract all
+% ext2spice cthresh 0 rthresh 0
+```
 
 ### SKY130 TECH FILE LABS
 
