@@ -362,11 +362,20 @@ magic -T sky130A.tech sky130_inv.mag &
   % extract all
 % ext2spice cthresh 0 rthresh 0
 ```
+![image](https://github.com/user-attachments/assets/79a5ff18-1b7f-4683-9fdf-9694411c2556)
+![image](https://github.com/user-attachments/assets/31989b7f-946e-4ff9-84fb-9cd5fbadfb31)
+![image](https://github.com/user-attachments/assets/77b88a31-a7ab-465e-a70d-4a78ffa165ce)
+![image](https://github.com/user-attachments/assets/8cefa889-7927-4866-ad09-029c05448853)
 
-#### CREATE SPICEDECK USING SKY130 TECH
-- [Content here...]
+
 
 #### CHARACTERIZE INVERTER USING SKY130 TECH FILES
+
+
+![image](https://github.com/user-attachments/assets/897ad45e-9fc6-4696-ad8f-8a1392ef5617)
+![image](https://github.com/user-attachments/assets/c7601857-331d-4f23-96c2-ab3a634c4c4d)
+
+
 -Pin Definitions: Adjust the pin definitions (A and Y) to match the actual physical layout of your inverter.
 -Timing Information: Replace the timing information with actual data from your characterization.
 -Cell Size and Floorplan: Modify the cell size and floorplan according to your design.
@@ -429,6 +438,7 @@ MACRO INVX1
 END MACRO
 ```
 
+
 ## Introduction to Magic Tools and DRC
 -Follow this Webpage :  http://opencircuitdesign.com/magic/Rules
 
@@ -442,6 +452,7 @@ To extract labs from a zip file using a command line, you can use the following 
 ```bash
 sudo tar xfz drc_tests.tgz
 ```
+
 ## Introduction to Magic & Steps to Load SKY130 Tech Rules
 
 | Step                             | Instructions                                                                                         |
@@ -453,6 +464,9 @@ sudo tar xfz drc_tests.tgz
 | **Create the VIA2 Mask**          | 1. Open the `tkcon` terminal within Magic.                                                           |
 |                                  | 2. Type the command: `cif see VIA2`.                                                                 |
 |                                  | 3. The metal 3-filled area will now be associated with the VIA2 mask.                                |
+![image](https://github.com/user-attachments/assets/4f5bc02f-810e-4e55-9eb2-d8939afde579)
+![image](https://github.com/user-attachments/assets/8e4996b3-f019-4f84-a04f-cc3a36656aec)
+![image](https://github.com/user-attachments/assets/1c2ea84f-6494-4570-b142-39c2d67b1b12)
 
 
 ## DAY 4: DELAY TABLES, CTS, TIMING ANALYSIS
