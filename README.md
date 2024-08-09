@@ -18,7 +18,7 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
   - [GENERAL TIMING CHARACTERISATION PARAMETERS](#general-timing-characterisation-parameters)
 - [LAB 2: FLOORPLANNING & PLACEMENT](#lab-2-floorplanning--placement)
   - [RUN FLOORPLAN USING OPENLANE](#steps-to-run-floorplan-using-openlane)
-  - [STEPS TO PERFORM PLACEMENT IN OPENLANE](#steps-to-perform-placement-in-openlane)
+  - [PERFORM PLACEMENT IN OPENLANE](#steps-to-perform-placement-in-openlane)
 - [THEORY 3: DESIGN LIBRARY CELL USING MAGIC LAYOUT AND NGSPICE CHARACTERIZATION](#theory-3-design-library-cell-using-magic-layout-and-ngspice-characterization)
   - [SPICE DECK CREATION FOR CMOS INVERTER](#spice-deck-creation-for-cmos-inverter)
   - [INCEPTION OF LAYOUT & CMOS FABRICATION PROCESS](#inception-of-layout--cmos-fabrication-process)
@@ -245,37 +245,95 @@ To ensure a successful floorplanning process, designers must carefully consider 
    magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
 
   ```
-  
-### STEPS TO PERFORM PLACEMENT IN OPENLANE
-- [Content here...]
+ | **Task**                    | **Steps**                                                                 |
+|-----------------------------|---------------------------------------------------------------------------|
+| **Centering the Design**     | 1. Press `S` to select the entire design.                                 |
+|                             | 2. Press `V` to align the design vertically to the middle of the screen.   |
+| **Zooming In on a Specific Area** | 1. Left-click and drag to highlight the desired region.             |
+|                             | 2. Right-click to open the context menu.                                   |
+|                             | 3. Press `Z` to zoom in on the selected area.                              |
+| **Retrieving Cell Details**  | 1. Hover your cursor over the cell for which you want details.            |
+|                             | 2. Press `S` to select the cell.                                           |
+|                             | 3. In the `tkcon` window, type the command `what` to display the cell's details. |
+ 
+### PERFORM PLACEMENT IN OPENLANE
+After successfully completing the floorplanning, the design process advances to the placement stage, which consists of two primary phases:
 
+Global Placement: In this phase, the tool determines the approximate locations for all the standard cells within the design.
+
+Detailed Placement: This phase finalizes the exact positions of all the standard cells, ensuring that the placement is legal. Legalization involves verifying that no standard cells overlap and that each cell is correctly positioned within the designated site rows.
+
+To begin the placement process, use the following command:
+```bash
+run_placement
+```
+After placement, use the below command to view results:
+```bash
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/20-07_16-44/results/placement
+```
+And then we can see 'picorv32a.placement.def' file. To open it using MAGIC use the follwoing command:
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def
+```
 ## THEORY 3: DESIGN LIBRARY CELL USING MAGIC LAYOUT AND NGSPICE CHARACTERIZATION
 
 ### SPICE DECK CREATION FOR CMOS INVERTER
-- [Content here...]
+-A SPICE deck is essentially a netlist that contains detailed connectivity information, including the input signals, output tap points, and various other essential details. Let’s explore this with an example:
+![image](https://github.com/user-attachments/assets/703abbb2-864c-4bda-b3d6-a8f173f0279e)
+
+- Nodes are required for defining the netlist:
+```bash
+  MOSFET (ORDER FOR NETLIST) : Drain Gate Substrate Source
+Syntax for MOSFET In a Netlist:
+e.g : M1 out in vdd vdd pmos W = 0.375u L = 0.25u
+```
+![image](https://github.com/user-attachments/assets/fd69b185-3587-4e54-a95c-ccd31fd0caea)
+
+![image](https://github.com/user-attachments/assets/f5bdb2d3-7805-445a-8b00-140acad56bdd)
+
+### INVERTER CHARACTERISTICS
+
+| **Characteristic**             | **Description**                                                                 |
+|--------------------------------|---------------------------------------------------------------------------------|
+| **Static Characteristics**     |                                                                                 |
+| - **Noise Margins**            | The tolerance of the inverter to noise, defined by the difference between logic levels. |
+| - **Transfer Characteristics** | The relationship between input voltage and output voltage.                      |
+| - **Power Dissipation**        | The amount of power consumed by the inverter when it is in a steady state.      |
+| - **DC Gain**                  | The gain of the inverter in the transition region, determining the steepness of the transfer curve. |
+| **Dynamic Characteristics**    |                                                                                 |
+| - **Propagation Delay**        | The time taken for the output to change after a change in input.                |
+| - **Rise Time (tr)**           | The time it takes for the output to transition from low to high.                |
+| - **Fall Time (tf)**           | The time it takes for the output to transition from high to low.                |
+| - **Power-Delay Product (PDP)**| The product of power dissipation and propagation delay, indicating the energy efficiency of the inverter. |
+| - **Capacitive Load Effects**  | The impact of capacitive loading on the speed and power consumption of the inverter. |
 
 ### INCEPTION OF LAYOUT & CMOS FABRICATION PROCESS
 
 #### CREATE ACTIVE REGIONS
-- [Content here...]
+- ![image](https://github.com/user-attachments/assets/3d8fb7eb-2a77-4775-9596-a7747c8ff8a7)
+
 
 #### FORMATION OF WELLS
-- [Content here...]
+- ![image](https://github.com/user-attachments/assets/797f3eeb-31f0-470e-ab74-f815ba9e37f4)
+
 
 #### FORMATION OF GATE TERMINALS
-- [Content here...]
+- ![image](https://github.com/user-attachments/assets/a05bc54a-273b-4b6f-8110-10cbec65dba8)
 
 #### LIGHTLY DOPED DRAIN (LDD) FORMATION
-- [Content here...]
+- ![image](https://github.com/user-attachments/assets/cd4c8565-4e34-4af7-beed-040fe2a1a811)
+
 
 #### SOURCE DRAIN FORMATION
-- [Content here...]
+- ![image](https://github.com/user-attachments/assets/853c79db-019a-4352-a7a0-20dc3be1dbb9)
+
 
 #### LOCAL INTERCONNECT FORMATION
-- [Content here...]
+- ![image](https://github.com/user-attachments/assets/dc2254b2-38ff-45bf-b3aa-2d7ee17e5cff)
 
 #### HIGHER LEVEL METAL FORMATION
-- [Content here...]
+- ![image](https://github.com/user-attachments/assets/5b3656b8-0196-4704-8f91-f69a54426d83)
+
 
 ## LAB 3: INTRODUCTION TO MAGIC AND SKY130A
 
