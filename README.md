@@ -721,8 +721,6 @@ Maze-Routing(Lee's Algorithm): These should not be zig-zag lines of connections 
 First step is algorithm tries to lable all of the grids surrounded. Only the adjacent horizontal and vertical grids are labeled not the digonal one as shown in the image below.Now we will lable the grids to the next integer untill we reach to the target. In the example we reached the target after integer 9.So now there are so many ways to reach to target from source but we have to choose the best shortest possible way to reach the target.And we need to avoid the zig-zag way better to cghoose 'L' shape routing'.
 ![image](https://github.com/user-attachments/assets/2bf73365-e013-418d-b580-ecf766922113)
 ![image](https://github.com/user-attachments/assets/2b7e3c37-2b10-4662-8243-de3a9899f667)
-![image](https://github.com/user-attachments/assets/201582a6-ca73-42be-82a2-24f83615e69c)
-![image](https://github.com/user-attachments/assets/6a02dc3e-8fb7-43bf-82ba-2015db9e15aa)
 ![image](https://github.com/user-attachments/assets/2f9bad5e-dd4d-4ea2-bec0-47183adf98d3)
 ![image](https://github.com/user-attachments/assets/c1fbb71d-c3ed-4aa4-8352-f54d6ec20a52)
 
