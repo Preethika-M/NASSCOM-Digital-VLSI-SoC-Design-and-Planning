@@ -1,1 +1,19 @@
+Day 3: SPICE Deck Creation for CMOS Inverter
+Understanding SPICE Deck Components
+You begin by understanding the essential components of a SPICE deck, which include defining the transistors, voltage sources, input signals, and output nodes.
 
+Key Steps:
+
+Define Transistor Parameters: Specify the model parameters for the NMOS and PMOS transistors, such as threshold voltage, channel length, and width.
+Set Up Power Supply: Define the voltage source (VDD) that powers the CMOS inverter.
+Input Signal Configuration: Create an input voltage source that simulates the digital signal driving the inverter.
+Output Node Declaration: Define the node where the output will be measured, usually the drain of the NMOS transistor.
+Include MOSFET Models: Link the SPICE deck to the MOSFET models provided by the foundry or a standard library.
+Simulation Command Setup
+You set up the simulation commands that will be executed by the SPICE simulator to analyze the inverter’s performance.
+
+Key Steps:
+
+DC Analysis: Set up a DC analysis to evaluate the inverter’s static behavior, like finding the voltage transfer characteristics (VTC).
+Transient Analysis: Configure transient analysis to observe the inverter's response to a time-varying input signal.
+Parameter Sweeping: Implement parameter sweeping to study the effects of varying input voltages on the output.
