@@ -35,11 +35,7 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
 
 - [THEORY + LAB 5: FINAL STEPS FOR RTL2GDS USING TRITONROUTE & OPENSTA](#theory--lab-5-final-steps-for-rtl2gds-using-tritonroute--opensta)
   - [Introduction to Routing Algorithm](#introduction-to-routing-algorithm)
-  - [Steps to build Power Distribution Network](#steps-to-build-power-distribution-network)
-  - [Steps for pin place by std cells](#steps-for-pin-place-by-std-cells)
-  - [Steps for global and detailed routing and configure TritonRoute](#steps-for-global-and-detailed-routing-and-configure-tritonroute)
-  - [Steps to configure synthesis settings to fix slack and include vdd/vss](#steps-to-configure-synthesis-settings-to-fix-slack-and-include-vddvss)
-- [REFERENCES](#references)
+  - [REFERENCES](#references)
 - [AUTHOR](#author)
 ## THEORY 1: OPEN-SOURCE EDA, OPENLANE & SKY130 PDK
 
