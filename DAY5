@@ -1,22 +1,20 @@
 Day 5: Timing Analysis and Optimization Using OpenSTA and TritonCTS
 Static Timing Analysis with OpenSTA
-You use OpenSTA to perform static timing analysis, ensuring that the CMOS inverter meets timing requirements.
+Use OpenSTA to perform static timing analysis, ensuring that the CMOS inverter meets timing requirements.
 
 Key Steps:
 
 Clock Tree Setup: Define the clock signal and set up the clock tree for timing analysis.
 Path Delay Analysis: Evaluate the timing of different paths in the circuit, identifying any critical paths that could lead to timing violations.
 Slack Calculation: Calculate slack to determine how much margin you have before timing violations occur.
-Clock Tree Synthesis with TritonCTS
-You use TritonCTS to synthesize the clock tree, optimizing the clock distribution for minimal skew and delay.
+Clock Tree Synthesis with TritonCTS:Use TritonCTS to synthesize the clock tree, optimizing the clock distribution for minimal skew and delay.
 
 Key Steps:
 
 Clock Buffer Insertion: Insert clock buffers to strengthen the clock signal and reduce skew.
 Skew and Latency Optimization: Adjust the placement and sizing of clock buffers to minimize skew and latency across the clock tree.
 Final Timing Validation: Perform a final timing analysis to ensure that the clock tree meets the timing requirements, with no violations or issues.
-Optimization Techniques
-You apply various optimization techniques to improve the overall performance of the CMOS inverter and its timing characteristics.
+Optimization Techniques:Apply various optimization techniques to improve the overall performance of the CMOS inverter and its timing characteristics.
 
 Key Steps:
 
