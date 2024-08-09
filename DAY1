@@ -1,1 +1,25 @@
+KEY LEARNINGS:
+Theory 1: Open-Source EDA, OpenLANE & SKY130 PDK
+RTL to GDSII Flow:
 
+The RTL to GDSII flow is the process of converting high-level hardware descriptions (RTL) into a physical layout (GDSII) ready for fabrication. It involves several steps, including synthesis, floorplanning, placement, routing, and signoff checks.
+Key checks include DRC, LVS, and STA, ensuring the design's correctness before it is fabricated.
+QFN-48 Chip Components:
+
+Core: The central part of the chip where the primary logic is implemented.
+IO Pads: Act as communication channels between the core and the external environment.
+Die: The area on the silicon wafer that includes both the core and IO pads.
+IPs (Intellectual Property): Pre-designed blocks like ADCs, DACs, and PLLs, requiring manual intervention during design.
+Introduction to OpenLANE:
+
+OpenLANE is an open-source ASIC design flow built around the SKY130 PDK. It automates the RTL to GDSII flow using various tools and scripts.
+Lab 1: Getting Familiar with Open Source EDA Tools
+OpenLANE Directory Structure:
+
+Understanding the structure of OpenLANE directories and important files, such as PDKs, design libraries, and technology-specific files, is crucial for navigating the tool.
+Synthesis Process:
+
+The synthesis process converts RTL code into a gate-level netlist. The lab demonstrated how to prepare a design, run synthesis, and review the synthesized results using OpenLANE.
+Linux Command Line Basics:
+
+Familiarity with basic Linux commands like cd, ls, and docker is essential for working in the OpenLANE environment.
