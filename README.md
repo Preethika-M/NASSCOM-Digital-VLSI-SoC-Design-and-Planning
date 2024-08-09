@@ -107,9 +107,7 @@ Foundry IPs are specialized components that often require manual design or human
 ## LAB 1: GETTING FAMILIAR WITH OPEN SOURCE EDA TOOLS
 
 ### Understanding OPENLANE Directory, Structure Design Preparation Step
-![image](https://github.com/user-attachments/assets/e8edf63a-136e-431a-afb5-8edf868217e1)
-
-![Screenshot from 2024-08-03 17-39-28](https://github.com/user-attachments/assets/927570ef-b1bc-4702-bc65-fae51ba7c266)
+![image](https://github.com/user-attachments/assets/654d470a-f355-4dfc-bae0-ffe855ea4baf)
 
 
 ### Review files after design prep and run synthesis
