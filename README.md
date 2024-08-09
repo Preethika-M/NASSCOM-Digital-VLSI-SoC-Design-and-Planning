@@ -796,8 +796,8 @@ TritonRoute manages access point clusters, which are groups of potential connect
 ## REFERENCES
 This project has utilized resources and materials from the following sources:
 
-- [VSD Standard Cell Design](URL-to-VSD-Standard-Cell-Design)
-- [Google Skywater PDK](URL-to-Google-Skywater-PDK)
+- [VSD Standard Cell Design](https://github.com/nickson-jose/vsdstdcelldesign)
+- [Google Skywater PDK](https://github.com/google/skywater-pdk)
 - Materials provided in the NASSCOM VSD SoC Design Program
 
 ### AUTHOR
