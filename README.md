@@ -17,7 +17,7 @@ NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
   - [CELL DESIGN AND CHARACTERISATION FLOWS](#cell-design-and-characterisation-flows)
   - [GENERAL TIMING CHARACTERISATION PARAMETERS](#general-timing-characterisation-parameters)
 - [LAB 2: FLOORPLANNING & PLACEMENT](#lab-2-floorplanning--placement)
-  - [STEPS TO RUN FLOORPLAN USING OPENLANE](#steps-to-run-floorplan-using-openlane)
+  - [RUN FLOORPLAN USING OPENLANE](#steps-to-run-floorplan-using-openlane)
   - [STEPS TO PERFORM PLACEMENT IN OPENLANE](#steps-to-perform-placement-in-openlane)
 - [THEORY 3: DESIGN LIBRARY CELL USING MAGIC LAYOUT AND NGSPICE CHARACTERIZATION](#theory-3-design-library-cell-using-magic-layout-and-ngspice-characterization)
   - [SPICE DECK CREATION FOR CMOS INVERTER](#spice-deck-creation-for-cmos-inverter)
@@ -240,7 +240,12 @@ To ensure a successful floorplanning process, designers must carefully consider 
   ```bash
     run_floorplan
     ```
+- Now to open the def file in magic, use below command:
+  ```bash
+   magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
 
+  ```
+  
 ### STEPS TO PERFORM PLACEMENT IN OPENLANE
 - [Content here...]
 
