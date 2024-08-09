@@ -757,6 +757,8 @@ To view the final layout, use the following command:
 ```bash
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-07_15-00/tmp/merged.lef def read /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-07_15-00/results/routing/picorv32a.def &
 ```
+![image](https://github.com/user-attachments/assets/a56bfeab-63f6-4789-9b5e-cff058bcf268)
+![Uploading image.png…]()
 
 
 ### Triton route:
@@ -785,6 +787,7 @@ TritonRoute includes advanced algorithms for managing connectivity access points
 
 Access Point Cluster Management:
 TritonRoute manages access point clusters, which are groups of potential connection points that can be used to connect different parts of the design. By efficiently managing these clusters, the tool can optimize routing paths and reduce congestion, leading to better overall design performance.
+![image](https://github.com/user-attachments/assets/742ea007-e6c7-45fa-9cc0-f666405a5da2)
 
 ## REFERENCES
 This project has utilized resources and materials from the following sources:
