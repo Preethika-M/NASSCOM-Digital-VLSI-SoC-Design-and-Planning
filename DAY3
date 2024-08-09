@@ -9,8 +9,7 @@ Set Up Power Supply: Define the voltage source (VDD) that powers the CMOS invert
 Input Signal Configuration: Create an input voltage source that simulates the digital signal driving the inverter.
 Output Node Declaration: Define the node where the output will be measured, usually the drain of the NMOS transistor.
 Include MOSFET Models: Link the SPICE deck to the MOSFET models provided by the foundry or a standard library.
-Simulation Command Setup
-You set up the simulation commands that will be executed by the SPICE simulator to analyze the inverter’s performance.
+Simulation Command Setup:Set up the simulation commands that will be executed by the SPICE simulator to analyze the inverter’s performance.
 
 Key Steps:
 
