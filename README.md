@@ -211,11 +211,17 @@ To ensure a successful floorplanning process, designers must carefully consider 
   ```bash
     run_floorplan
     ```
+![Screenshot 2024-08-09 165830](https://github.com/user-attachments/assets/df51594d-57d5-403e-a110-4e7eaf3ab857)
+![Screenshot 2024-08-09 165815](https://github.com/user-attachments/assets/4f8765c4-8b1f-4f48-b268-24cfde9e5bb3)
+
+  
 - Now to open the def file in magic, use below command:
   ```bash
    magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
 
   ```
+  ![Screenshot from 2024-08-05 20-39-24](https://github.com/user-attachments/assets/e1752f2e-fcdc-4b41-a7c1-81718d8af4e2)
+
  | **Task**                    | **Steps**                                                                 |
 |-----------------------------|---------------------------------------------------------------------------|
 | **Centering the Design**     | 1. Press `S` to select the entire design.                                 |
