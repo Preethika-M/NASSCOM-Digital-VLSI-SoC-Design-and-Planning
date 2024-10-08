@@ -1,4 +1,5 @@
 NASSCOM - DIGITAL - SOC - DESIGN - AND - PLANNING:
+![image](https://github.com/user-attachments/assets/771d49c9-1f01-499b-a439-baa17631a331)
 
 # Table of Contents
 
